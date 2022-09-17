@@ -19,7 +19,8 @@ public static void main(String[] args){
      Deck dealerDeck = new Deck();
 
      double playerMoney = 100.00;
-
+    
+     System.out.println("Betinizi girin");
      Scanner userIn = new Scanner(System.in);
 
      //game loop
@@ -96,9 +97,8 @@ public static void main(String[] args){
                     if((playerSideDeck1.cardsValue()>21)&&endRound==false){
                         System.out.println("Birinci el busted;");
                         System.out.println("Ikinci eliniz icin hit:1 or stay:2");
-                        splitround1=false;
                         splitround2=true;
-                        break;
+                        splitround1=false;
                     }                  
                     
                     System.out.println("birinci elinizin son hali: "+ playerSideDeck1.cardsValue());
@@ -106,30 +106,19 @@ public static void main(String[] args){
                     int cevabb=userIn.nextInt();
                     if(cevabb==2){
                         System.out.println("ikinci eliniz icin hit:1 or stay:2");
-                        
-                        splitround1=false;
                         splitround2=true;
+                        splitround1=false;
+                        
                     
                     }
-                    else{
-                        playerSideDeck1.draw(playingDeck);
-                        if(playerSideDeck1.cardsValue()>21){
-                            System.out.println("birinci el busted");
-                            System.out.println("ikinci eliniz icin hit:1 or stay:2");
-                            splitround1=false;
-                            splitround2=true;
-                            break;
-                            
-                        }
-                    }
+                    
                 }
-                
             }
-            else if(cevab==2){
+             if(cevab==2){
                 splitround1=false;
-                
+                splitround2=true;
                 System.out.println("ikinci eliniz icin hit:1 or stay:2");
-            while(splitround1==false&&splitround2==true){
+                while(splitround1==false&&splitround2==true){
 
                 playerSideDeck2.draw(playingDeck);
                 
@@ -141,6 +130,7 @@ public static void main(String[] args){
                     splitround=0;
                     splitround2=false;
                     endRound=true;
+                    break;
                 }
                 
                     System.out.println("Hit:1 or Stay:2");
@@ -149,8 +139,9 @@ public static void main(String[] args){
                         splitround=0;
                         splitround2=false;
                         endRound=true;
+                        break;
                     }
-                    else{
+                    if(cevap==1){
                         playerSideDeck2.draw(playingDeck);
                         System.out.println("ikinci elinizin son hali: "+ playerSideDeck2.cardsValue());
                         if(playerSideDeck2.cardsValue()>21){
@@ -159,6 +150,7 @@ public static void main(String[] args){
                             splitround=0;
                             splitround2=false;
                             endRound=true;
+                            break;
                         }
                     }
             }
@@ -274,31 +266,3 @@ public static void main(String[] args){
 }
 
 
-//* 
-//if((playerDeck.getCard(0)).getValue()==playerDeck.getCard(1).getValue()){
-//    playerSideDeck1.addCard(playerDeck.getCard(0));
-//    playerSideDeck1.draw(playingDeck);
-//    playerSideDeck2.addCard(playerDeck.getCard(1));
-//    playerSideDeck2.draw(playingDeck);
-//    System.out.println("Birinci eliniz:"+playerSideDeck1.cardsValue()+"Ikinci eliniz:"+ playerSideDeck2);
-//    System.out.println("Birinci eliniz icin Hit:1 or Stay:2");
-//    if(response==1){
-//       playerSideDeck1.draw(playingDeck);
-//       System.out.println("Sunu cektiniz:"+ playerSideDeck1.getCard(playerSideDeck1.deckSize()-1).toString());
-//    }
-//    if(response==2){
-//       System.out.println("ikinci eliniz icin Hit:1 or Stay:2");
-//       if(response==1){
-//           playerSideDeck2.draw(playingDeck);
-//           System.out.println("Sunu cektiniz:"+ playerSideDeck2.getCard(playerSideDeck2.deckSize()-1).toString());
-//
-//       }
-//       if(response==2){
-//           break;
-//       }
-//    }
-//}
-//else{
-//   System.out.println("Eliniz ayni degere sahip degil");
-//   
-//}
