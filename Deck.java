@@ -81,8 +81,9 @@ public class Deck {
 
     public int cardsValue(){
         int totalValue =0;
-        int aces = 0;
+        int aces=0;
         for(Card aCard: this.cards){
+            
             switch(aCard.getValue()){
                 case IKI: totalValue +=2; break;
                 case UC: totalValue +=3; break;
@@ -96,27 +97,20 @@ public class Deck {
                 case JACK: totalValue +=10; break;
                 case QUEEN: totalValue +=10; break;
                 case KING: totalValue +=10; break;
-                case AS: if(totalValue>21){
-                    totalValue+=1;
-                }
-                else{
-                    totalValue+=11;
-                }
-                break;
-                 
-
+                case AS: aces +=1; break;
             }
+
         }
-        
-        for (int i=0; i< aces; i++){
+
+        for(int i=0; i<aces; i++){
             if(totalValue>10){
                 totalValue +=1;
             }
             else{
                 totalValue +=11;
             }
-         
         }
+        
         return totalValue;
     }
 }
