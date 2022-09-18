@@ -46,6 +46,7 @@ public static void main(String[] args){
         dealerDeck.draw(playingDeck);
         //split ilk durumda yok
         boolean split=false;
+        boolean err=false;
         while(true){
             if(split==false){
             System.out.println("Eliniz:");
@@ -83,6 +84,12 @@ public static void main(String[] args){
             }
             //tatlı split kısmı
             if(response==3){
+                if(playerDeck.getCard(0)!=playerDeck.getCard(1)){
+                    System.out.println("Bunu yapamazsın\n");
+                }
+            }
+            if(response==3&&playerDeck.getCard(0)==playerDeck.getCard(1)){
+                
                 playerBet = 2*playerBet; //iki deste içinde aynı miktar para 5 girildiyse ayrılan deste için de 5
                 split=true;
                 // deste sol ve sag olarak ikiye ayrılıp direkt kart çekiliyor.
@@ -135,6 +142,7 @@ public static void main(String[] args){
                     }
                     
                 }
+            
                 break;
             }
         }
